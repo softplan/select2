@@ -2273,7 +2273,6 @@ the specific language governing permissions and limitations under the Apache Lic
 
             // add aria associations
             selection.find(".select2-chosen").attr("id", "select2-chosen-"+idSuffix);
-            this.focusser.attr("aria-labelledby", "select2-chosen-"+idSuffix);
             this.results.attr("id", "select2-results-"+idSuffix);
             this.search.attr("aria-owns", "select2-results-"+idSuffix);
 
