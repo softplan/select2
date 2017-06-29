@@ -701,10 +701,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             this.liveRegion = $('.select2-hidden-accessible');
             if (this.liveRegion.length == 0) {
-                this.liveRegion = $("<span>", {
-                        role: "status",
-                        "aria-live": "polite"
-                    })
+                this.liveRegion = $("<span>", {})
                     .addClass("select2-hidden-accessible")
                     .appendTo(document.body);
             }
