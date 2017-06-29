@@ -2140,7 +2140,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 "   <span class='select2-arrow' role='presentation'><b role='presentation'></b></span>",
                 "</a>",
                 "<label for='' class='select2-offscreen'></label>",
-                "<input class='select2-focusser select2-offscreen' type='text' aria-haspopup='true' role='button' />",
+                "<input class='select2-focusser select2-offscreen' type='text' aria-haspopup='true' />",
                 "<div class='select2-drop select2-display-none'>",
                 "   <div class='select2-search'>",
                 "       <label for='' class='select2-offscreen'></label>",
@@ -2170,12 +2170,6 @@ the specific language governing permissions and limitations under the Apache Lic
 
             this.parent.opening.apply(this, arguments);
 
-            if (this.showSearchInput !== false) {
-                // IE appends focusser.val() at the end of field :/ so we manually insert it at the beginning using a range
-                // all other browsers handle this just fine
-
-                this.search.val(this.focusser.val());
-            }
             if (this.opts.shouldFocusInput(this)) {
                 this.search.focus();
                 // move the cursor to the end after focussing, otherwise it will be at the beginning and
@@ -2559,6 +2553,8 @@ the specific language governing permissions and limitations under the Apache Lic
 
                 this.selection.find(".select2-chosen").html(this.opts.escapeMarkup(placeholder));
 
+                this.focusser.val(placeholder);
+
                 this.selection.addClass("select2-default");
 
                 this.container.removeClass("select2-allowclear");
@@ -2647,6 +2643,7 @@ the specific language governing permissions and limitations under the Apache Lic
             }
             if (formatted !== undefined) {
                 container.append(formatted);
+                this.focusser.val(formatted);
             }
             cssClass=this.opts.formatSelectionCssClass(data, container);
             if (cssClass !== undefined) {
@@ -2728,7 +2725,6 @@ the specific language governing permissions and limitations under the Apache Lic
         // single
         clearSearch: function () {
             this.search.val("");
-            this.focusser.val("");
         },
 
         // single
